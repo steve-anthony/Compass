@@ -1,0 +1,122 @@
+# depslib dependency file v1.0
+1410986544 source:c:\users\steve\desktop\projet\c++\compass\main.cpp
+	"include/Compass.hpp"
+	<iostream>
+	<stdio.h>
+
+1410982521 source:c:\users\steve\desktop\projet\c++\compass\compass\pastar\astar.cpp
+	"AStar.hpp"
+
+1410886169 c:\users\steve\desktop\projet\c++\compass\compass\pastar\astar.hpp
+	"../predef.hpp"
+	"../stdafx.hpp"
+
+1410879495 source:c:\users\steve\desktop\projet\c++\compass\compass\pcore\node.cpp
+	"Node.hpp"
+
+1410879495 c:\users\steve\desktop\projet\c++\compass\compass\pcore\node.hpp
+	"Point.hpp"
+
+1410859612 c:\users\steve\desktop\projet\c++\compass\compass\compass.hpp
+	"stdafx.hpp"
+	"PAStar/IAStar.hpp"
+
+1410813494 c:\users\steve\desktop\projet\c++\compass\compass\pastar\pastar.hpp
+	"PAStar.hpp"
+
+1410857870 c:\users\steve\desktop\projet\c++\compass\compass\stdafx.hpp
+	<iostream>
+	<stdio.h>
+	<stdlib.h>
+	<fstream>
+	<string.h>
+	<vector>
+	<list>
+	<queue>
+	<math.h>
+	<sstream>
+	<deque>
+	<typeinfo>
+	<map>
+	"PCore/ICore.hpp"
+
+1410861801 c:\users\steve\desktop\projet\c++\compass\compass\pcore\icore.hpp
+	"Matrix.hpp"
+	"Node.hpp"
+	"Point.hpp"
+
+1410862993 c:\users\steve\desktop\projet\c++\compass\compass\pcore\matrix.hpp
+	"Matrix.tpp"
+
+1410864492 c:\users\steve\desktop\projet\c++\compass\compass\pcore\matrix.tpp
+	"Matrix.hpp"
+	<iostream>
+
+1410859384 c:\users\steve\desktop\projet\c++\compass\compass\predef.hpp
+
+1410858989 c:\users\steve\desktop\projet\c++\compass\compass\pastar\iastar.hpp
+	"AStar.hpp"
+
+1410861923 source:c:\users\steve\desktop\projet\c++\compass\compass\pcore\point.cpp
+	"Point.hpp"
+
+1410861883 c:\users\steve\desktop\projet\c++\compass\compass\pcore\point.hpp
+
+1410879495 source:c:\users\steve\desktop\projet\c++\compass\include\pcore\node.cpp
+	"Node.hpp"
+
+1410879495 c:\users\steve\desktop\projet\c++\compass\include\pcore\node.hpp
+	"Point.hpp"
+
+1410861883 c:\users\steve\desktop\projet\c++\compass\include\pcore\point.hpp
+
+1410861923 source:c:\users\steve\desktop\projet\c++\compass\include\pcore\point.cpp
+	"Point.hpp"
+
+1410986525 source:c:\users\steve\desktop\projet\c++\compass\include\ppathfinding\astar.cpp
+	"AStar.hpp"
+
+1410986525 c:\users\steve\desktop\projet\c++\compass\include\ppathfinding\astar.hpp
+	"../predef.hpp"
+	"../stdafx.hpp"
+
+1410986940 c:\users\steve\desktop\projet\c++\compass\include\predef.hpp
+
+1410857870 c:\users\steve\desktop\projet\c++\compass\include\stdafx.hpp
+	<iostream>
+	<stdio.h>
+	<stdlib.h>
+	<fstream>
+	<string.h>
+	<vector>
+	<list>
+	<queue>
+	<math.h>
+	<sstream>
+	<deque>
+	<typeinfo>
+	<map>
+	"PCore/ICore.hpp"
+
+1410861801 c:\users\steve\desktop\projet\c++\compass\include\pcore\icore.hpp
+	"Matrix.hpp"
+	"Node.hpp"
+	"Point.hpp"
+
+1410862993 c:\users\steve\desktop\projet\c++\compass\include\pcore\matrix.hpp
+	"Matrix.tpp"
+
+1410864492 c:\users\steve\desktop\projet\c++\compass\include\pcore\matrix.tpp
+	"Matrix.hpp"
+	<iostream>
+
+1410986940 c:\users\steve\desktop\projet\c++\compass\include\compass.hpp
+	"stdafx.hpp"
+	"PPathfinding/IPathfinding.hpp"
+	"PGraph/IGraph.hpp"
+
+1410858989 c:\users\steve\desktop\projet\c++\compass\include\ppathfinding\ipathfinding.hpp
+	"AStar.hpp"
+
+1410986940 c:\users\steve\desktop\projet\c++\compass\include\pgraph\igraph.hpp
+

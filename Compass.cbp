@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="Compass" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/Compass" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+					<Add directory="Compass/PCore" />
+					<Add directory="Compass/PAStar" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/Compass" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add directory="Compass/PCore" />
+					<Add directory="Compass/PAStar" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+		</Compiler>
+		<Unit filename="include/Compass.hpp" />
+		<Unit filename="include/PCore/ICore.hpp" />
+		<Unit filename="include/PCore/Matrix.hpp" />
+		<Unit filename="include/PCore/Node.cpp" />
+		<Unit filename="include/PCore/Node.hpp" />
+		<Unit filename="include/PCore/Point.cpp" />
+		<Unit filename="include/PCore/Point.hpp" />
+		<Unit filename="include/PGraph/IGraph.hpp" />
+		<Unit filename="include/PPathfinding/AStar.cpp" />
+		<Unit filename="include/PPathfinding/AStar.hpp" />
+		<Unit filename="include/PPathfinding/IPathfinding.hpp" />
+		<Unit filename="include/predef.hpp" />
+		<Unit filename="include/stdafx.hpp" />
+		<Unit filename="main.cpp" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
