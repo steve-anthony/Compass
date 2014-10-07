@@ -11,6 +11,8 @@
 
 namespace Compass{
 
+    static int WALL = -1;
+
 
     namespace PPathfinding{
 

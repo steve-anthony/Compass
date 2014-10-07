@@ -5,6 +5,7 @@
 
 using namespace std;
 
+
 int main()
 {
     cout << "Hello world!" << endl;
@@ -12,50 +13,57 @@ int main()
 
     Compass::PCore::Matrix<int> mapi(20,20,1);
 
-    mapi.set(4,0,9);
-    mapi.set(4,1,9);
-    mapi.set(4,2,9);
-    mapi.set(4,3,9);
-    mapi.set(4,4,9);
-    mapi.set(4,5,9);
-    mapi.set(4,6,9);
-    mapi.set(4,7,9);
-    mapi.set(4,8,9);
-
-    Compass::PCore::Matrix<int> mapres(20,20,0);
-    mapres.set(4,0,9);
-    mapres.set(4,1,9);
-    mapres.set(4,2,9);
-    mapres.set(4,3,9);
-    mapres.set(4,4,9);
-    mapres.set(4,5,9);
-    mapres.set(4,6,9);
-    mapres.set(4,7,9);
-    mapres.set(4,8,9);
+    mapi.set(4,0,Compass::WALL);
+    mapi.set(4,1,Compass::WALL);
+    mapi.set(4,2,Compass::WALL);
+    mapi.set(4,3,Compass::WALL);
+    mapi.set(4,4,Compass::WALL);
+    mapi.set(4,5,Compass::WALL);
+    mapi.set(4,6,Compass::WALL);
+    mapi.set(4,7,Compass::WALL);
+    mapi.set(4,8,Compass::WALL);
+    mapi.set(5,8,Compass::WALL);
+    mapi.set(6,8,Compass::WALL);
+    mapi.set(7,8,Compass::WALL);
+    mapi.set(8,8,Compass::WALL);
+    mapi.set(9,8,Compass::WALL);
+    mapi.set(9,10,Compass::WALL);
+    mapi.set(9,11,Compass::WALL);
+    mapi.set(9,12,Compass::WALL);
+    mapi.set(9,7,Compass::WALL);
+    mapi.set(10,8,Compass::WALL);
+    mapi.set(10,9,Compass::WALL);
+    mapi.set(10,10,Compass::WALL);
+    mapi.set(11,10,Compass::WALL);
+    mapi.set(12,10,Compass::WALL);
+    mapi.set(13,10,Compass::WALL);
 
 
     Compass::PPathfinding::AStar  astar;
-    astar.init(mapi);
-    std::list<Compass::PCore::Point> res = astar.run(Compass::PCore::Point(2,2),Compass::PCore::Point(8,5));
+    astar.init(&mapi);
+    std::list<Compass::PCore::Point> res = astar.run(Compass::PCore::Point(2,2),Compass::PCore::Point(6,7));
+    res = astar.run(Compass::PCore::Point(2,2),Compass::PCore::Point(18,3));
 
     int n=1;
     while (!res.empty())
-      {
-
-        //std::cout << ' ' << res.front().x << " " << res.front().y << std::endl;
-        mapres.set(res.front().x,res.front().y,n);
+    {
+        mapi.set(res.front().x,res.front().y,n);
         n++;
         res.pop_front();
-      }
+    }
 
 
-    for (int i = 0; i< mapres.getSizeX();i++){
-        for (int j = 0; j< mapres.getSizeY();j++){
+    for (int i = 0; i< mapi.getSizeX();i++){
+        for (int j = 0; j< mapi.getSizeY();j++){
             if (i == 2 && j == 2) cout << "XX" << " " ;
-            else if (i == 8 && j == 5) cout << "YY" << " " ;
-            else printf ("%.2i ", mapres.get(i,j));
+            else if (i == 18 && j == 3) cout << "YY" << " " ;
+            else if (mapi.get(i,j) < 0) cout << "**" << " " ;
+            else if (mapi.get(i,j) == 1) cout << "  " << " " ;
+            else printf ("%.2i ", mapi.get(i,j));
         }
         cout << endl;
     }
+
+
     return 0;
 }

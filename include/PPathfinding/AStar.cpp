@@ -6,48 +6,40 @@ namespace PPathfinding{
 
 AStar::AStar()
 {
-    map = new Compass::PCore::Matrix<int>(0,0,0);
-    //closeList = new Compass::PCore::Matrix<int>(0,0,0);
     closeList = new Compass::PCore::Matrix<Compass::PCore::Node*>(0,0,NULL);
+    map = new Compass::PCore::Matrix<int>(0,0,NULL);
 }
 
 AStar::~AStar()
 {
-    //dtor
+    openList.clear();
+    closeList->clear();
+    delete closeList;
 }
 
-void AStar::init(Compass::PCore::Matrix<int> _map){
+void AStar::init(const Compass::PCore::Matrix<int> * _map){
+    //map = _map;
+    map->clear();
 
-    //map->create(_map.getSizeX(),_map.getSizeY(),0);
-    //map->copy(_map);
+cout <<"ok";
 
-    closeList->create(_map.getSizeX(),_map.getSizeY(),NULL);
-
-    for (int i = 0; i< closeList->getSizeX();i++)
-        for (int j = 0; j< closeList->getSizeY();j++){
-            closeList->set(i,j,new Compass::PCore::Node(_map.get(i,j),0));
+    map->create(_map->getSizeX(),_map->getSizeY(),NULL);
+    for (int i = 0; i< _map->getSizeX();i++)
+        for (int j = 0; j< _map->getSizeY();j++){
+            map->set(i,j,_map->get(i,j));
         }
-
 
 
 }
 
 int AStar::heuristic(Compass::PCore::Point p1,Compass::PCore::Point p2){
-    return abs(sqrt((p1.x-p2.x)*(p1.x-p2.x)+(p1.y-p2.y)*(p1.y-p1.y)));
+    return abs( sqrt((p1.x-p2.x)*(p1.x-p2.x)+(p1.y-p2.y)*(p1.y-p1.y)) );
 }
+
 
 bool AStar::isInOpenList(Compass::PCore::Node* n){
 
-    std::list<Compass::PCore::Node*> openListCopy = openList;
-
-    while(!openListCopy.empty()){
-
-        if (n == openListCopy.front() ) return true;
-        openListCopy.pop_front();
-
-    }
-
-    return false;
+    return (std::find(openList.begin(), openList.end(), n) != openList.end());
 }
 
 bool AStar::isVisited(Compass::PCore::Point position){
@@ -55,18 +47,27 @@ bool AStar::isVisited(Compass::PCore::Point position){
     return (n->verified);
 }
 
+bool AStar::isWall(Compass::PCore::Point position){
+    Compass::PCore::Node* n = closeList->get(position.x,position.y);
+    return (n->gScore == -1);
+}
+
 std::list<Compass::PCore::Node*> AStar::getNeighbors(Compass::PCore::Node* node){
 
     Compass::PCore::Point position = node->position;
     std::vector<Compass::PCore::Point> positionsNeighbors;
+
+
+
     positionsNeighbors.push_back(Compass::PCore::Point(position.x-1,position.y-1));
-    positionsNeighbors.push_back(Compass::PCore::Point(position.x,position.y-1));
+    positionsNeighbors.push_back(Compass::PCore::Point(position.x+1,position.y+1));
+    positionsNeighbors.push_back(Compass::PCore::Point(position.x-1,position.y+1));
     positionsNeighbors.push_back(Compass::PCore::Point(position.x+1,position.y-1));
+
+    positionsNeighbors.push_back(Compass::PCore::Point(position.x,position.y-1));
     positionsNeighbors.push_back(Compass::PCore::Point(position.x-1,position.y));
     positionsNeighbors.push_back(Compass::PCore::Point(position.x+1,position.y));
-    positionsNeighbors.push_back(Compass::PCore::Point(position.x-1,position.y+1));
     positionsNeighbors.push_back(Compass::PCore::Point(position.x,position.y+1));
-    positionsNeighbors.push_back(Compass::PCore::Point(position.x+1,position.y+1));
 
     std::list<Compass::PCore::Node*> neighbors;
     for(int i =0;i < positionsNeighbors.size();i++){
@@ -81,13 +82,14 @@ std::list<Compass::PCore::Node*> AStar::getNeighbors(Compass::PCore::Node* node)
 
             newnode->position.x = positionsNeighbors.at(i).x;
             newnode->position.y = positionsNeighbors.at(i).y;
+            if(!isWall(newnode->position)) neighbors.push_back(newnode);
             //newnode->parent = node;
 
-            neighbors.push_back(newnode);
+
 
         }
     }
-            Compass::PCore::Node* neighbor = neighbors.front();
+    //        Compass::PCore::Node* neighbor = neighbors.front();
 
 
     return neighbors;
@@ -101,14 +103,47 @@ bool compareNode (Compass::PCore::Node * first, Compass::PCore::Node * second)
 
 
 std::list<Compass::PCore::Point> AStar::run(Compass::PCore::Point _startPosition,Compass::PCore::Point _endPosition){
+
+    // RESET
+    openList.clear();
+    closeList->clear();
+    closeList->create(map->getSizeX(),map->getSizeY(),NULL);
+    for (int i = 0; i< map->getSizeX();i++)
+        for (int j = 0; j< map->getSizeY();j++){
+            closeList->set(i,j,new Compass::PCore::Node(map->get(i,j),0));
+        }
+
+    //CONF
     startPosition = _startPosition;
     endPosition = _endPosition;
+    std::list<Compass::PCore::Point> result;
+
+    //VERIF
+    if(isWall(startPosition) || isWall(endPosition)) return result;
+
+
+    if (not (startPosition.x > 0 &&
+            startPosition.y > 0 &&
+            startPosition.x < map->getSizeX() &&
+            startPosition.y < map->getSizeY()
+            ))throw std::logic_error( "Start position is out of map." );
+
+
+    if (not (endPosition.x > 0 &&
+            endPosition.y > 0 &&
+            endPosition.x < map->getSizeX() &&
+            endPosition.y < map->getSizeY()
+            )) throw std::logic_error( "End position is out of map." );
+
 
     Compass::PCore::Node * n = closeList->get(startPosition.x,startPosition.y);
     n->position.x = startPosition.x;
     n->position.y = startPosition.y;
+    n->gScore = 0;
     n->fScore = n->gScore + heuristic(startPosition,endPosition);
 
+   // std::list<Compass::PCore::Node*> openListFake;
+    //openListFake.push_front(n);
     openList.push_front(n);
 
     startNode = n;
@@ -116,18 +151,26 @@ std::list<Compass::PCore::Point> AStar::run(Compass::PCore::Point _startPosition
 
     while (!openList.empty())
     {
-        openList.sort(compareNode);
+       openList.sort (compareNode);
+//openListFake.sort (compareNode);
         Compass::PCore::Node * current = openList.front();
 
 
+        /*while(!openListFake.empty()){
+            Compass::PCore::Node * c = openListFake.front();
+            cout << c->gScore << " " << c->fScore << endl;
+            openListFake.pop_front();
+
+        }
+        cout << endl << endl;*/
         /*string gg;
         cin>> gg ;*/
 
-
+        // GOAL
         if (current->position.x == endPosition.x && current->position.y == endPosition.y){
 
                 Compass::PCore::Node * nend = closeList->get(endPosition.x,endPosition.y);
-                std::list<Compass::PCore::Point> result;
+
                 result.push_front(Compass::PCore::Point(nend->position.x,nend->position.y));
                 while (nend->parent){
                     nend = nend->parent;
@@ -143,36 +186,33 @@ std::list<Compass::PCore::Point> AStar::run(Compass::PCore::Point _startPosition
 
 
         openList.pop_front();
-        current->verified = true;
-        /*string lol;
-cin >> lol ;*/
+
+        current->verified = true; // add to closed list
+
         while (!neighbors.empty()){
 
             Compass::PCore::Node* neighbor = neighbors.front();
-            //cout << "lol " << neighbor->verified << " " << neighbor->position.x << " " << neighbor->position.y << endl;
+            neighbors.pop_front();
+
             if (!neighbor->verified){
 
-
-
-                int gscore = current->gScore + neighbor->gScore + heuristic(neighbor->position,current->position);
-
+                int gscore = current->gScore + neighbor->gScore;
 
                 if(!isInOpenList(neighbor) || gscore < neighbor->gScore){
-
 
                     neighbor->parent = current;
                     neighbor->gScore = gscore;
                     neighbor->fScore = neighbor->gScore + heuristic(neighbor->position,endPosition);
-                    //cout << neighbor->fScore << " " << neighbor->position.x <<  " " << neighbor->position.y << endl;
 
-                    //cout << "lol " << neighbor->fScore << " " << neighbor->position.x << " " << neighbor->position.y << endl;
-                    //cout << "mdr " << neighbor->position.x << " " << neighbor->position.y << " " << neighbor->fScore << endl;
-                    if(!isInOpenList(neighbor)) openList.push_front(neighbor);
+                    if(!isInOpenList(neighbor)){
+                        openList.push_front(neighbor);
+
+                    }
                 }
 
 
             }
-            neighbors.pop_front();
+
         }
     }
 }

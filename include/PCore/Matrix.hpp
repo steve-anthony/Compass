@@ -12,19 +12,20 @@ class Matrix
 {
     public:
         /** Default constructor */
+        Matrix();
         Matrix(int _x,int _y,Type _val);
         /** Default destructor */
         virtual ~Matrix();
 
         void create(int _x,int _y,Type _val);
-        void copy(Matrix<Type> matrix);
+        void copy(Matrix<Type> const  matrix) const ;
         void clear();
 
-        Type get(int _x,int _y);
-        void set(int _x,int _y,Type val);
+        Type get(int _x,int _y) const ;
+        void set(int _x,int _y,Type val) const ;
 
-        int getSizeX() {return x;}
-        int getSizeY() {return y;}
+        int getSizeX() const  {return x;}
+        int getSizeY() const  {return y;}
 
     private:
 

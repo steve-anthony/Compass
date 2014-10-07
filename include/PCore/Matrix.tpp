@@ -30,7 +30,7 @@ void Matrix<Type>::create(int _x,int _y,Type _val)
 }
 
 template<typename Type>
-void  Matrix<Type>::copy(Matrix<Type> matrix){
+void  Matrix<Type>::copy(Matrix<Type> const  matrix) const {
 
     create(matrix.getSizeX(),matrix.getSizeY(),matrix.get(0,0));
     for(int i = 0;i < x;i++)
@@ -60,12 +60,12 @@ Matrix<Type>::~Matrix()
 }
 
 template<typename Type>
-Type Matrix<Type>::get(int _x,int _y){
+Type Matrix<Type>::get(int _x,int _y) const {
     return tab[_x][_y];
 }
 
 template<typename Type>
-void Matrix<Type>::set(int _x,int _y,Type val){
+void Matrix<Type>::set(int _x,int _y,Type val) const {
     tab[_x][_y] = val;
 }
 

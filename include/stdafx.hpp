@@ -11,12 +11,13 @@
 #include <vector>
 #include <list>
 #include <queue>
-#include <math.h>
 #include <sstream>
 #include <deque>
 #include <typeinfo>
 #include <map>
-
+#include <algorithm>
+#include <cmath>
+#include <stdexcept>
 
 #include "PCore/ICore.hpp"
 
