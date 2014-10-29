@@ -13,6 +13,7 @@ class Node
 public:
     Node();
     Node( int _gScore,int _fScore);
+    int score;
     int gScore;
     int fScore;
     Compass::PCore::Point position;

@@ -8,6 +8,7 @@ AStar::AStar()
 {
     closeList = new Compass::PCore::Matrix<Compass::PCore::Node*>(0,0,NULL);
     map = new Compass::PCore::Matrix<int>(0,0,NULL);
+    this->isSmoothPath = false;
 }
 
 AStar::~AStar()
@@ -21,7 +22,6 @@ void AStar::init(const Compass::PCore::Matrix<int> * _map){
     //map = _map;
     map->clear();
 
-cout <<"ok";
 
     map->create(_map->getSizeX(),_map->getSizeY(),NULL);
     for (int i = 0; i< _map->getSizeX();i++)
@@ -82,6 +82,7 @@ std::list<Compass::PCore::Node*> AStar::getNeighbors(Compass::PCore::Node* node)
 
             newnode->position.x = positionsNeighbors.at(i).x;
             newnode->position.y = positionsNeighbors.at(i).y;
+
             if(!isWall(newnode->position)) neighbors.push_back(newnode);
             //newnode->parent = node;
 
@@ -93,6 +94,12 @@ std::list<Compass::PCore::Node*> AStar::getNeighbors(Compass::PCore::Node* node)
 
 
     return neighbors;
+}
+
+
+void AStar::smoothPath(bool activated){
+
+    this->isSmoothPath = activated;
 }
 
 
@@ -110,7 +117,8 @@ std::list<Compass::PCore::Point> AStar::run(Compass::PCore::Point _startPosition
     closeList->create(map->getSizeX(),map->getSizeY(),NULL);
     for (int i = 0; i< map->getSizeX();i++)
         for (int j = 0; j< map->getSizeY();j++){
-            closeList->set(i,j,new Compass::PCore::Node(map->get(i,j),0));
+            if (map->get(i,j) != Compass::WALL) closeList->set(i,j,new Compass::PCore::Node(map->get(i,j)+1,0));
+            else closeList->set(i,j,new Compass::PCore::Node(map->get(i,j),0));
         }
 
     //CONF
@@ -170,13 +178,38 @@ std::list<Compass::PCore::Point> AStar::run(Compass::PCore::Point _startPosition
         if (current->position.x == endPosition.x && current->position.y == endPosition.y){
 
                 Compass::PCore::Node * nend = closeList->get(endPosition.x,endPosition.y);
-
+                Compass::PCore::Node * prevNend = NULL;
+                Compass::PCore::Point prevDir;
                 result.push_front(Compass::PCore::Point(nend->position.x,nend->position.y));
                 while (nend->parent){
+                    prevNend = nend;
                     nend = nend->parent;
+                    if (this->isSmoothPath ){
 
-                    result.push_front(Compass::PCore::Point(nend->position.x,nend->position.y));
+                        if(prevNend != NULL){
+                            Compass::PCore::Point dir;
+                            dir.x =  nend->position.x - prevNend->position.x;
+                            dir.y =  nend->position.y - prevNend->position.y;
+
+                            if (!(dir.x == prevDir.x && dir.y == prevDir.y))
+                                result.push_front(Compass::PCore::Point(prevNend->position.x,prevNend->position.y));
+
+                            prevDir.x = dir.x;
+                            prevDir.y = dir.y;
+                        }
+                        else result.push_front(Compass::PCore::Point(nend->position.x,nend->position.y));
+
+
+
+
+                    }
+                    else{
+                        result.push_front(Compass::PCore::Point(nend->position.x,nend->position.y));
+                    }
+
                 }
+
+                if (this->isSmoothPath )result.push_front(Compass::PCore::Point(nend->position.x,nend->position.y));
 
 
                 return result; // path
@@ -194,9 +227,9 @@ std::list<Compass::PCore::Point> AStar::run(Compass::PCore::Point _startPosition
             Compass::PCore::Node* neighbor = neighbors.front();
             neighbors.pop_front();
 
-            if (!neighbor->verified){
+            if (!neighbor->verified){// si pas dans la closed list on continue
 
-                int gscore = current->gScore + neighbor->gScore;
+                int gscore = current->gScore + current->score;
 
                 if(!isInOpenList(neighbor) || gscore < neighbor->gScore){
 

@@ -12,7 +12,7 @@
 #include <list>
 #include <queue>
 #include <sstream>
-#include <deque>
+//#include <deque>
 #include <typeinfo>
 #include <map>
 #include <algorithm>

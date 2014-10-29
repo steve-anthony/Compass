@@ -22,14 +22,14 @@ class Matrix
         void clear();
 
         Type get(int _x,int _y) const ;
-        void set(int _x,int _y,Type val) const ;
+        void set(int _x,int _y,Type  val) ;
 
         int getSizeX() const  {return x;}
         int getSizeY() const  {return y;}
 
     private:
-
-        Type **tab;
+        std::map<std::pair<int,int>,Type> mymap;
+        //Type **tab;
         int x,y;
 };
 

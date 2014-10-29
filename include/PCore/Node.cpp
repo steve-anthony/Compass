@@ -10,6 +10,7 @@ Node::Node(): gScore(0),fScore(0){
 
 Node::Node( int _gScore,int _fScore): gScore(_gScore),fScore(_fScore)
 {
+    score = _gScore;
     verified = false;
 }
 

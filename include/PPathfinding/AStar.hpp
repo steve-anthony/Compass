@@ -19,9 +19,10 @@ class AStar
         virtual ~AStar();
 
         void init(const Compass::PCore::Matrix<int> * _map);
+        void smoothPath(bool activated);
         std::list<Compass::PCore::Point> run(Compass::PCore::Point _startPosition,Compass::PCore::Point _endPosition);
 
-    protected:
+    private:
         int heuristic(Compass::PCore::Point p1,Compass::PCore::Point p2);
         std::list<Compass::PCore::Node*> getNeighbors(Compass::PCore::Node* node);
         bool isVisited(Compass::PCore::Point position);
@@ -29,13 +30,13 @@ class AStar
         bool isWall(Compass::PCore::Point position);
 
 
-    private:
         Compass::PCore::Matrix<Compass::PCore::Node*> * closeList;
         std::list<Compass::PCore::Node*> openList;
         Compass::PCore::Point startPosition;
         Compass::PCore::Point endPosition;
         Compass::PCore::Node* startNode;
         Compass::PCore::Matrix<int> * map;
+        bool isSmoothPath;
 
 
 };
