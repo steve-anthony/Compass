@@ -2,7 +2,7 @@
 <CodeBlocks_project_file>
 	<FileVersion major="1" minor="6" />
 	<Project>
-		<Option title="Compass" />
+		<Option title="FindYourWay" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<Build>
@@ -36,19 +36,19 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Unit filename="include/Compass.hpp" />
-		<Unit filename="include/PCore/ICore.hpp" />
-		<Unit filename="include/PCore/Matrix.hpp" />
-		<Unit filename="include/PCore/Node.cpp" />
-		<Unit filename="include/PCore/Node.hpp" />
-		<Unit filename="include/PCore/Point.cpp" />
-		<Unit filename="include/PCore/Point.hpp" />
-		<Unit filename="include/PGraph/IGraph.hpp" />
-		<Unit filename="include/PPathfinding/AStar.cpp" />
-		<Unit filename="include/PPathfinding/AStar.hpp" />
-		<Unit filename="include/PPathfinding/IPathfinding.hpp" />
-		<Unit filename="include/predef.hpp" />
-		<Unit filename="include/stdafx.hpp" />
+		<Unit filename="../../include/Compass.hpp" />
+		<Unit filename="../../include/PCore/ICore.hpp" />
+		<Unit filename="../../include/PCore/Matrix.hpp" />
+		<Unit filename="../../include/PCore/Node.cpp" />
+		<Unit filename="../../include/PCore/Node.hpp" />
+		<Unit filename="../../include/PCore/Point.cpp" />
+		<Unit filename="../../include/PCore/Point.hpp" />
+		<Unit filename="../../include/PGraph/IGraph.hpp" />
+		<Unit filename="../../include/PPathfinding/AStar.cpp" />
+		<Unit filename="../../include/PPathfinding/AStar.hpp" />
+		<Unit filename="../../include/PPathfinding/IPathfinding.hpp" />
+		<Unit filename="../../include/predef.hpp" />
+		<Unit filename="../../include/stdafx.hpp" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />
