@@ -13,12 +13,12 @@ int main()
 {
     cout << "Find your way whith astar algo!" << endl;
 
-    /* Load map */
+    /* Load map in matrix */
     Compass::PCore::Matrix<int> mapi = getMapFromFile("mapInput.txt");
 
     /* Config parameters for the algorithm */
     Compass::PPathfinding::AStar  astar;
-    //astar.smoothPath(true);
+    astar.smoothPath(true); //To have smoot path
     astar.init(&mapi);
 
     /* Find the path from pend to pstart*/

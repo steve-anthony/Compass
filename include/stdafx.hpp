@@ -6,17 +6,12 @@
 External dependency
 */
 
-#include <iostream>
-#include <stdio.h>
-#include <stdlib.h>
-#include <fstream>
-#include <string.h>
+//#include <iostream>
+//#include <stdio.h>
+
 #include <vector>
 #include <list>
-#include <queue>
-#include <sstream>
-//#include <deque>
-#include <typeinfo>
+
 #include <map>
 #include <algorithm>
 #include <cmath>

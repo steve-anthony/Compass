@@ -19,17 +19,9 @@
 
 1414677609 c:\users\steve\desktop\projet\c++\compass\include\predef.hpp
 
-1414677638 c:\users\steve\desktop\projet\c++\compass\include\stdafx.hpp
-	<iostream>
-	<stdio.h>
-	<stdlib.h>
-	<fstream>
-	<string.h>
+1414683651 c:\users\steve\desktop\projet\c++\compass\include\stdafx.hpp
 	<vector>
 	<list>
-	<queue>
-	<sstream>
-	<typeinfo>
 	<map>
 	<algorithm>
 	<cmath>
@@ -48,7 +40,7 @@
 	"Matrix.hpp"
 	<iostream>
 
-1414680953 source:c:\users\steve\desktop\projet\c++\compass\exemples\findyourway\main.cpp
+1414683451 source:c:\users\steve\desktop\projet\c++\compass\exemples\findyourway\main.cpp
 	"../../include/Compass.hpp"
 	<iostream>
 	<stdio.h>
