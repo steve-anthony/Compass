@@ -28,5 +28,6 @@ There is a recurent problematic for games. Pathfinding is very usefull when you 
     savePathInFile("outFile.txt",mapi,res);
 </code>
 
+As you can see, it's very easy to use, but there is a littel point I need to explain, the "smootPath" method. Whit this setting, you can say that you want a result (path) cleaned. You specify that you just want keep significant point and not all the path.
 
 
