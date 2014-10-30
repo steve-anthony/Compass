@@ -36,6 +36,7 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="../../Compass.hpp" />
 		<Unit filename="../../include/Compass.hpp" />
 		<Unit filename="../../include/PCore/ICore.hpp" />
 		<Unit filename="../../include/PCore/Matrix.hpp" />

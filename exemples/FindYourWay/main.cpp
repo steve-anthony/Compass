@@ -6,6 +6,37 @@
 
 using namespace std;
 
+Compass::PCore::Matrix<int> getMapFromFile(std::string file);
+void savePathInFile(std::string file,Compass::PCore::Matrix<int> m,std::list<Compass::PCore::Point> path);
+
+int main()
+{
+    cout << "Find your way whith astar algo!" << endl;
+
+    /* Load map */
+    Compass::PCore::Matrix<int> mapi = getMapFromFile("mapInput.txt");
+
+    /* Config parameters for the algorithm */
+    Compass::PPathfinding::AStar  astar;
+    //astar.smoothPath(true);
+    astar.init(&mapi);
+
+    /* Find the path from pend to pstart*/
+    Compass::PCore::Point pend(2,2);
+    Compass::PCore::Point pstart(8,8);
+    std::list<Compass::PCore::Point> res = astar.run(pend,pstart);
+
+    /* Save result in file */
+    savePathInFile("outFile.txt",mapi,res);
+
+    return 0;
+}
+
+
+
+
+
+/** ... */
 Compass::PCore::Matrix<int> getMapFromFile(std::string file){
     Compass::PCore::Matrix<int> res(1,1,1);
     ifstream fichier(file.c_str());
@@ -87,22 +118,4 @@ void savePathInFile(std::string file,Compass::PCore::Matrix<int> m,std::list<Com
 }
 
 
-int main()
-{
-    cout << "Hello world!" << endl;
 
-    Compass::PCore::Matrix<int> mapi = getMapFromFile("mapInput.txt");
-    Compass::PPathfinding::AStar  astar;
-    astar.smoothPath(true);
-    astar.init(&mapi);
-
-    Compass::PCore::Point pend(2,2);
-    Compass::PCore::Point pstart(8,8);
-    std::list<Compass::PCore::Point> res = astar.run(pend,pstart);
-    //res = astar.run(Compass::PCore::Point(2,2),Compass::PCore::Point(18,3));
-
-    savePathInFile("outFile.txt",mapi,res);
-
-
-    return 0;
-}

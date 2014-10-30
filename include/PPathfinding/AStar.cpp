@@ -154,7 +154,7 @@ std::list<Compass::PCore::Point> AStar::run(Compass::PCore::Point _startPosition
     //openListFake.push_front(n);
     openList.push_front(n);
 
-    startNode = n;
+    //startNode = n;
 
 
     while (!openList.empty())

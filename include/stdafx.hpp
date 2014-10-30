@@ -2,6 +2,9 @@
 #ifndef STDAFX_HPP
 #define	STDAFX_HPP
 
+/**
+External dependency
+*/
 
 #include <iostream>
 #include <stdio.h>

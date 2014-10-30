@@ -7,7 +7,7 @@
 namespace Compass{
 namespace PCore{
 
-
+/** Struct for a node of the researh */
 class Node
 {
 public:

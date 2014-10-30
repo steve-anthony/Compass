@@ -2,24 +2,24 @@
 1414597432 source:c:\users\steve\desktop\projet\c++\compass\include\pcore\node.cpp
 	"Node.hpp"
 
-1414597415 c:\users\steve\desktop\projet\c++\compass\include\pcore\node.hpp
+1414677288 c:\users\steve\desktop\projet\c++\compass\include\pcore\node.hpp
 	"Point.hpp"
 
-1410858283 c:\users\steve\desktop\projet\c++\compass\include\pcore\point.hpp
+1414677402 c:\users\steve\desktop\projet\c++\compass\include\pcore\point.hpp
 
 1410858323 source:c:\users\steve\desktop\projet\c++\compass\include\pcore\point.cpp
 	"Point.hpp"
 
-1414605526 source:c:\users\steve\desktop\projet\c++\compass\include\ppathfinding\astar.cpp
+1414680732 source:c:\users\steve\desktop\projet\c++\compass\include\ppathfinding\astar.cpp
 	"AStar.hpp"
 
-1414599469 c:\users\steve\desktop\projet\c++\compass\include\ppathfinding\astar.hpp
+1414678850 c:\users\steve\desktop\projet\c++\compass\include\ppathfinding\astar.hpp
 	"../predef.hpp"
 	"../stdafx.hpp"
 
-1412684217 c:\users\steve\desktop\projet\c++\compass\include\predef.hpp
+1414677609 c:\users\steve\desktop\projet\c++\compass\include\predef.hpp
 
-1414591860 c:\users\steve\desktop\projet\c++\compass\include\stdafx.hpp
+1414677638 c:\users\steve\desktop\projet\c++\compass\include\stdafx.hpp
 	<iostream>
 	<stdio.h>
 	<stdlib.h>
@@ -36,31 +36,31 @@
 	<stdexcept>
 	"PCore/ICore.hpp"
 
-1410858201 c:\users\steve\desktop\projet\c++\compass\include\pcore\icore.hpp
+1414676858 c:\users\steve\desktop\projet\c++\compass\include\pcore\icore.hpp
 	"Matrix.hpp"
 	"Node.hpp"
 	"Point.hpp"
 
-1414595900 c:\users\steve\desktop\projet\c++\compass\include\pcore\matrix.hpp
+1414677169 c:\users\steve\desktop\projet\c++\compass\include\pcore\matrix.hpp
 	"Matrix.tpp"
 
 1414595890 c:\users\steve\desktop\projet\c++\compass\include\pcore\matrix.tpp
 	"Matrix.hpp"
 	<iostream>
 
-1414605851 source:c:\users\steve\desktop\projet\c++\compass\exemples\findyourway\main.cpp
+1414679609 source:c:\users\steve\desktop\projet\c++\compass\exemples\findyourway\main.cpp
 	"../../include/Compass.hpp"
 	<iostream>
 	<stdio.h>
 	<fstream>
 
-1410983340 c:\users\steve\desktop\projet\c++\compass\include\compass.hpp
+1414678813 c:\users\steve\desktop\projet\c++\compass\include\compass.hpp
 	"stdafx.hpp"
 	"PPathfinding/IPathfinding.hpp"
 	"PGraph/IGraph.hpp"
 
-1410855389 c:\users\steve\desktop\projet\c++\compass\include\ppathfinding\ipathfinding.hpp
+1414677695 c:\users\steve\desktop\projet\c++\compass\include\ppathfinding\ipathfinding.hpp
 	"AStar.hpp"
 
-1410983340 c:\users\steve\desktop\projet\c++\compass\include\pgraph\igraph.hpp
+1414677501 c:\users\steve\desktop\projet\c++\compass\include\pgraph\igraph.hpp
 
