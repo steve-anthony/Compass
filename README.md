@@ -10,20 +10,22 @@ Just add the folder "Compass/include" in your project and the header "Compass.hp
 
 There is a recurent problematic for games. Pathfinding is very usefull when you want to find the path from a point A to a point B. AStar is a good algorithm for this sort of problems and there is an implementation.
 <br>
-<br>
 <code>
+
+    // Load map from file 
     Compass::PCore::Matrix<int> mapi = getMapFromFile("mapInput.txt");
-    /* Config parameters for the algorithm */
+    
+    // Config parameters for the algorithm 
     Compass::PPathfinding::AStar  astar;
     astar.smoothPath(true); //To have smoot path
     astar.init(&mapi);
 
-    /* Find the path from pend to pstart*/
+    // Find the path from pend to pstart
     Compass::PCore::Point pend(2,2);
     Compass::PCore::Point pstart(8,8);
     std::list<Compass::PCore::Point> res = astar.run(pend,pstart);
 
-    /* Save result in file */
+    // Save result in file 
     savePathInFile("outFile.txt",mapi,res);
 </code>
 
